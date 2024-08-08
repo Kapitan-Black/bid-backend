@@ -6,7 +6,9 @@ const router = express.Router();
 
 
 
-router.post("/",  MyMainFormController.createMyMainForm);
+router.post("/", MyMainFormController.createMyMainForm);
+
+router.get("/", MyMainFormController.getMyMainForm)
 
 
 export default router;

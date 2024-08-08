@@ -25,7 +25,7 @@ const rooms: Schema<IRoom> = new mongoose.Schema({
 const hotelsSchema: Schema<IHotel> = new Schema({
   hotelName: { type: String, required: true},
   hotelDescription: { type: String },
-  images: [{ type: String}],
+  images: [{ type: String }],
   rooms: [rooms],
 });
 

@@ -7,10 +7,10 @@ const createMyMainForm = async (req: Request, res: Response) => {
     // console.log("Request body:", req.body); // Log the entire request body
     // const  hotel = req.body;
     // console.log("Parsed hotel:", hotels);
-    const { hotel, transfer, flight } = req.body;
+    const { hotel, transfer, flight, image, idArray } = req.body;
 
     // if (!hotel | attraction)
-    if (!hotel || !transfer || !flight) {
+    if (!hotel || !transfer || !flight || !image) {
       return res
         .status(400)
         .json({ message: "Hotel and attraction fields are required" });
@@ -21,6 +21,8 @@ const createMyMainForm = async (req: Request, res: Response) => {
       hotel,
       transfer,
       flight,
+      image,
+      idArray,
     });
 
     await mainBidForm.save();
@@ -31,7 +33,18 @@ const createMyMainForm = async (req: Request, res: Response) => {
   }
 };
 
+const getMyMainForm = async (req: Request, res: Response) => {
+  try {
+    const forms = await MainBidForm.find({});
+    res.status(200).json(forms);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Failed to get forms" });
+  }
+};
+
 export default {
   createMyMainForm,
+  getMyMainForm,
 };
 

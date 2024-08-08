@@ -16,8 +16,8 @@ const hotelSchema = new mongoose.Schema({
   images: [{ type: String }],
   id: { type: String },
   rooms: [{ type: rooms }],
+  sum: {type: Number},
 });
-
 
 const transferSchema = new mongoose.Schema({
   id: { type: String },
@@ -31,7 +31,6 @@ const transferSchema = new mongoose.Schema({
   agentComments: { type: String },
   sum: { type: Number },
 });
-
 
 const flightCardSchema = new mongoose.Schema({
   id: { type: String },
@@ -67,10 +66,18 @@ const flightCardSchema = new mongoose.Schema({
   agentComments: { type: String },
 });
 
+const imageSeparatorSchema = new mongoose.Schema({
+  id: { type: String },
+  type: { type: String, enum: ["image"] },
+  imageUrl: { type: String },
+});
+
 const mainBidFormSchema = new mongoose.Schema({
   hotel: [hotelSchema],
   transfer: [transferSchema],
   flight: [flightCardSchema],
+  image: [imageSeparatorSchema],
+  idArray: [{ type: String }],
 });
 
 const MainBidFormSchema = mongoose.model("MainBidForm", mainBidFormSchema);
