@@ -7,10 +7,10 @@ const createMyMainForm = async (req: Request, res: Response) => {
     // console.log("Request body:", req.body); // Log the entire request body
     // const  hotel = req.body;
     // console.log("Parsed hotel:", hotels);
-    const { hotel, transfer, flight, image, idArray } = req.body;
+    const { hotel, transfer, flight, image, idArray, formName } = req.body;
 
     // if (!hotel | attraction)
-    if (!hotel || !transfer || !flight || !image) {
+    if (!hotel || !transfer || !flight || !image || !formName) {
       return res
         .status(400)
         .json({ message: "Hotel and attraction fields are required" });
@@ -23,6 +23,7 @@ const createMyMainForm = async (req: Request, res: Response) => {
       flight,
       image,
       idArray,
+      formName,
     });
 
     await mainBidForm.save();

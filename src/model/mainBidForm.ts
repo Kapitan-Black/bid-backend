@@ -16,7 +16,7 @@ const hotelSchema = new mongoose.Schema({
   images: [{ type: String }],
   id: { type: String },
   rooms: [{ type: rooms }],
-  sum: {type: Number},
+  sum: { type: Number },
 });
 
 const transferSchema = new mongoose.Schema({
@@ -78,6 +78,7 @@ const mainBidFormSchema = new mongoose.Schema({
   flight: [flightCardSchema],
   image: [imageSeparatorSchema],
   idArray: [{ type: String }],
+  formName: { type: String },
 });
 
 const MainBidFormSchema = mongoose.model("MainBidForm", mainBidFormSchema);
