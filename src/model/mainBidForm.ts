@@ -22,10 +22,13 @@ const hotelSchema = new mongoose.Schema({
 const transferSchema = new mongoose.Schema({
   id: { type: String },
   type: { type: String, enum: ["transfer"] },
+  transferDescription: { type: String },
   transferDate: { type: Date },
-  time: { type: String },
+  departureTime: { type: String },
+  arrivalTime: { type: String },
   from: { type: String },
   to: { type: String },
+  passengerComposition: { type: String },
   agentComments: { type: String },
   sum: { type: Number },
 });
@@ -33,22 +36,29 @@ const transferSchema = new mongoose.Schema({
 const flightCardSchema = new mongoose.Schema({
   id: { type: String },
   type: { type: String, enum: ["flight"] },
-  DepartureDate: { type: Date },
-  ArrivalDate: { type: Date },
-  FlightNumber: { type: String },
-  Airline: { type: String },
-  DepartureAirport: { type: String },
-  ArrivalAirport: { type: String },
-  StopsNumber: { type: Number },
-  StopoverAirport1: { type: String },
-  StopoverAirport2: { type: String },
-  FlightTime: { type: String },
-  LandingTime: { type: String },
+  flightDescription: { type: String },
+  departureDate: { type: Date },
+  arrivalDate: { type: Date },
+  flightNumber: { type: String },
+  airline: { type: String },
+  departureAirport: { type: String },
+  arrivalAirport: { type: String },
+  stopsNumber: { type: Number },
+  stopoverAirport1: { type: String },
+  stopoverAirport2: { type: String },
+  stopoverAirport3: { type: String },
+  stopover1Time: { type: String },
+  stopover2Time: { type: String },
+  stopover3Time: { type: String },
+  flightTime: { type: String },
+  landingTime: { type: String },
 
   numberOfAdults: { type: Number },
   numberOfChildren: { type: Number },
+  numberOfBabies: { type: Number },
   priceForAdult: { type: Number },
   priceForChild: { type: Number },
+  priceForBaby: { type: Number },
   agentComments: { type: String },
 });
 
@@ -65,6 +75,7 @@ const mainBidFormSchema = new mongoose.Schema({
   image: [imageSeparatorSchema],
   idArray: [{ type: String }],
   formName: { type: String },
+  createDate: { type: Date },
 });
 
 const MainBidFormSchema = mongoose.model("MainBidForm", mainBidFormSchema);

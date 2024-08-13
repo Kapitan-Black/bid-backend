@@ -10,6 +10,9 @@ router.post("/", MyMainFormController.createMyMainForm);
 
 router.get("/", MyMainFormController.getMyMainForm)
 
+router.get("/:formName", MyMainFormController.getMyMainForm);
+
+
 
 export default router;
 

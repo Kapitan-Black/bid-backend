@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import MainBidForm from "../model/mainBidForm";
-import Hotel from "../model/mainBidForm";
+import MainBidFormSchema from "../model/mainBidForm";
 
 const createMyMainForm = async (req: Request, res: Response) => {
   try {
@@ -17,13 +17,14 @@ const createMyMainForm = async (req: Request, res: Response) => {
     }
    
 
-    const mainBidForm = new Hotel({
+    const mainBidForm = new MainBidFormSchema({
       hotel,
       transfer,
       flight,
       image,
       idArray,
       formName,
+      createDate: new Date()
     });
 
     await mainBidForm.save();
@@ -36,7 +37,16 @@ const createMyMainForm = async (req: Request, res: Response) => {
 
 const getMyMainForm = async (req: Request, res: Response) => {
   try {
-    const forms = await MainBidForm.find({});
+
+    const { formName } = req.params;
+    console.log(formName)
+
+    let forms;
+    if (formName) {
+      forms = await MainBidForm.find({ formName });
+    } else {
+      forms = await MainBidForm.find({});
+    }
     res.status(200).json(forms);
   } catch (error) {
     console.log(error);
