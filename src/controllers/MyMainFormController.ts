@@ -39,7 +39,6 @@ const getMyMainForm = async (req: Request, res: Response) => {
   try {
 
     const { formName } = req.params;
-    console.log(formName)
 
     let forms;
     if (formName) {
