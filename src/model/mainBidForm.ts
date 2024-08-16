@@ -76,6 +76,7 @@ const mainBidFormSchema = new mongoose.Schema({
   idArray: [{ type: String }],
   formName: { type: String },
   createDate: { type: Date },
+  flightDate: { type: String },
 });
 
 const MainBidFormSchema = mongoose.model("MainBidForm", mainBidFormSchema);
