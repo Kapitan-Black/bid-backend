@@ -1,16 +1,16 @@
 import express from "express";
-import multer from "multer";
 import { param } from "express-validator";
 import HotelsController from "../controllers/HotelsController";
+import { jwtCheck } from "../middleware/auth";
 
 const router = express.Router();
 
-router.post("/", HotelsController.CreateHotel);
+router.post("/", jwtCheck, HotelsController.CreateHotel);
 
-router.get("/", HotelsController.GetHotels);
+router.get("/",jwtCheck,  HotelsController.GetHotels);
 
-router.get("/:id", param("id").isString() ,  HotelsController.GetHotel)
+router.get("/:id", jwtCheck, param("id").isString() ,  HotelsController.GetHotel)
 
-router.delete("/", HotelsController.DeleteHotel);
+router.delete("/",jwtCheck, HotelsController.DeleteHotel);
 
 export default router;

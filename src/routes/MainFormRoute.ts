@@ -1,16 +1,16 @@
 import express from "express";
-import multer from "multer";
 import MyMainFormController from "../controllers/MyMainFormController";
+import { jwtCheck } from "../middleware/auth";
 
 const router = express.Router();
 
 
 
-router.post("/", MyMainFormController.createMyMainForm);
+router.post("/", jwtCheck, MyMainFormController.createMyMainForm);
 
-router.get("/", MyMainFormController.getMyMainForm)
+router.get("/", jwtCheck, MyMainFormController.getMyMainForm)
 
-router.get("/:formName", MyMainFormController.getMyMainForm);
+router.get("/:formName", jwtCheck, MyMainFormController.getMyMainForm);
 
 
 

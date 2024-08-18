@@ -7,6 +7,7 @@ import MyImageRoute from "./routes/MyImageRoute";
 import MainFormRoute from "./routes/MainFormRoute";
 import HotelsRoute from "./routes/HotelsRoute";
 import DeleteImageRoute from "./routes/DeleteImageRoute";
+import UserRoute from "./routes/UserRoute";
 
 mongoose
   .connect(process.env.MONGODB_CONNECTION_STRING as string)
@@ -27,10 +28,12 @@ app.get("/health", async (req: Request, res: Response) => {
   res.send({message: "health OK!"})
 })
 
+app.use("/api/user", UserRoute)
 app.use("/api/main-form", MainFormRoute);
 app.use("/api/hotels", HotelsRoute);
-app.use("/api/images", MyImageRoute);
+// app.use("/api/images", MyImageRoute);
 app.use("/api/delete-image", DeleteImageRoute)
+
 
 app.listen(9000, () => {
   console.log("server started on localhost: 9000");
