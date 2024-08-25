@@ -1,4 +1,5 @@
 interface IRoom {
+  id: string;
   roomType: string;
   images: string[];
 }
@@ -18,6 +19,7 @@ interface IHotel {
 import mongoose, { Schema } from "mongoose";
 
 const rooms: Schema<IRoom> = new mongoose.Schema({
+  id: {type: String},
   roomType: { type: String, },
   images: [{ type: String }],
 });
