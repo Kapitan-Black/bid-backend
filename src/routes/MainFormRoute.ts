@@ -10,7 +10,7 @@ router.post("/", jwtCheck, MyMainFormController.createMyMainForm);
 
 router.get("/", jwtCheck, MyMainFormController.getMyMainForm)
 
-router.get("/:formName", jwtCheck, MyMainFormController.getMyMainForm);
+router.get("/:formName", MyMainFormController.getMyMainForm);
 
 
 
