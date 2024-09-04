@@ -10,6 +10,7 @@ import DeleteImageRoute from "./routes/DeleteImageRoute";
 import UserRoute from "./routes/UserRoute";
 import HotelsUpdateRoute from "./routes/HotelsUpdateRoute";
 import bodyParser from "body-parser"
+import MainFormUpdateRoute from "./routes/MainFormUpdateRoute";
 
 mongoose
   .connect(process.env.MONGODB_CONNECTION_STRING as string)
@@ -37,6 +38,7 @@ app.get("/health", async (req: Request, res: Response) => {
 
 app.use("/api/user", UserRoute)
 app.use("/api/main-form", MainFormRoute);
+app.use("/api/main-form-update", MainFormUpdateRoute)
 app.use("/api/hotels", HotelsRoute);
 app.use("/api/hotels-update", HotelsUpdateRoute)
 // app.use("/api/images", MyImageRoute);

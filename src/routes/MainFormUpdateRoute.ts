@@ -1,11 +1,11 @@
 import express from "express";
 import { jwtCheck } from "../middleware/auth";
 import HotelsUpdateController from "../controllers/HotelsUpdateController";
+import MainFormUpdateController from "../controllers/MainFormUpdateController";
 
 const router = express.Router();
 
-router.put("/:id", jwtCheck, HotelsUpdateController.UpdateHotel);
+router.put("/:id", MainFormUpdateController.UpdateMainForm);
 
-// router.delete("/", jwtCheck, HotelsUpdateController.DeleteImageUrls);
 
 export default router;

@@ -7,6 +7,7 @@ const createMyMainForm = async (req: Request, res: Response) => {
 
     const { hotel, transfer, flight, image, idArray, formName } = req.body;
     const flightDate = req.body.flight[0].departureDate;
+    // console.log(req.body)
 
     if (!hotel || !transfer || !flight || !image || !formName) {
       return res
@@ -23,7 +24,6 @@ const createMyMainForm = async (req: Request, res: Response) => {
       idArray,
       formName,
       createDate: new Date().toISOString(),
-      flightDate: flightDate,
     });
 
     await mainBidForm.save();
@@ -52,8 +52,32 @@ const getMyMainForm = async (req: Request, res: Response) => {
   }
 };
 
+
+const deleteMainForm = async (req: Request, res: Response) => {
+  const {formId} = req.body;
+
+  try {
+    const deletedForm = await MainBidFormSchema.findByIdAndDelete(formId);
+
+    if (!deletedForm) {
+      return res.status(404).json({ message: "Bid form not found" });
+    }
+
+    res.status(200).json({
+      message: "Bid form deleted successfully",
+      deletedForm,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Something went wrong" });
+  }
+};
+
+
+
 export default {
   createMyMainForm,
   getMyMainForm,
+  deleteMainForm,
 };
 

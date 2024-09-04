@@ -66,6 +66,7 @@ const imageSeparatorSchema = new mongoose.Schema({
   id: { type: String },
   type: { type: String, enum: ["image"] },
   imageUrl: { type: String },
+  description: { type: String},
 });
 
 const mainBidFormSchema = new mongoose.Schema({
@@ -76,7 +77,6 @@ const mainBidFormSchema = new mongoose.Schema({
   idArray: [{ type: String }],
   formName: { type: String },
   createDate: { type: Date },
-  flightDate: { type: String },
 });
 
 const MainBidFormSchema = mongoose.model("MainBidForm", mainBidFormSchema);

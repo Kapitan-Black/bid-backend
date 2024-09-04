@@ -6,11 +6,14 @@ const router = express.Router();
 
 
 
-router.post("/", jwtCheck, MyMainFormController.createMyMainForm);
+router.post("/", MyMainFormController.createMyMainForm);
 
 router.get("/", jwtCheck, MyMainFormController.getMyMainForm)
 
 router.get("/:formName", MyMainFormController.getMyMainForm);
+
+router.delete("/", jwtCheck, MyMainFormController.deleteMainForm);
+
 
 
 
