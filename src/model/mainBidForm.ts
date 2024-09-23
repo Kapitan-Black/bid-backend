@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const rooms = new mongoose.Schema({
   roomType: { type: String },
+  roomDescription: { type: String },
   images: [{ type: String }],
   nightPrice: { type: Number },
   numberOfRooms: { type: Number },
@@ -76,6 +77,7 @@ const mainBidFormSchema = new mongoose.Schema({
   image: [imageSeparatorSchema],
   idArray: [{ type: String }],
   formName: { type: String },
+  holidayStartDate: { type: Date },
   createDate: { type: Date },
 });
 

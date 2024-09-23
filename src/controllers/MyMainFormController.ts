@@ -4,8 +4,21 @@ import MainBidFormSchema from "../model/mainBidForm";
 
 const createMyMainForm = async (req: Request, res: Response) => {
   try {
+    const existForm = await MainBidFormSchema.findOne({ formName: req.body.formName })
+    
+    if (existForm) {
+      return res.status(400).json({message: "form with this name is already exist"})
+    }
 
-    const { hotel, transfer, flight, image, idArray, formName } = req.body;
+    const {
+      hotel,
+      transfer,
+      flight,
+      image,
+      idArray,
+      formName,
+      holidayStartDate,
+    } = req.body;
     const flightDate = req.body.flight[0].departureDate;
     // console.log(req.body)
 
@@ -23,6 +36,7 @@ const createMyMainForm = async (req: Request, res: Response) => {
       image,
       idArray,
       formName,
+      holidayStartDate,
       createDate: new Date().toISOString(),
     });
 

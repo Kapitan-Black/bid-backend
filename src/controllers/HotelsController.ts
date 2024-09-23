@@ -5,6 +5,11 @@ import Hotels from "../model/hotels";
 const CreateHotel = async (req: Request, res: Response) => {
   try {
     const hotel = new Hotels(req.body);
+    const existingHotel = await Hotels.findOne({ hotelName: req.body.hotelName })
+
+    if (existingHotel) {
+      return res.status(400).json({message: "Hotel with this name already exist"})
+    }
 
     await hotel.save();
 
@@ -26,7 +31,7 @@ const GetHotels = async (req: Request, res: Response) => {
 };
 
 const GetHotel = async (req: Request, res: Response) => {
-  try {
+  try {   
     const hotelId = req.params.id;
     console.log(hotelId);
     const hotel = await Hotels.findOne({ hotelId });

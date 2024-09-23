@@ -1,6 +1,7 @@
 interface IRoom {
   id: string;
   roomType: string;
+  roomDescription: string;
   images: string[];
 }
 
@@ -21,6 +22,7 @@ import mongoose, { Schema } from "mongoose";
 const rooms: Schema<IRoom> = new mongoose.Schema({
   id: {type: String},
   roomType: { type: String, },
+  roomDescription: { type: String},
   images: [{ type: String }],
 });
 
