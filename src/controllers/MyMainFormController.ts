@@ -2,12 +2,17 @@ import { Request, Response } from "express";
 import MainBidForm from "../model/mainBidForm";
 import MainBidFormSchema from "../model/mainBidForm";
 
+
 const createMyMainForm = async (req: Request, res: Response) => {
   try {
-    const existForm = await MainBidFormSchema.findOne({ formName: req.body.formName })
-    
+    const existForm = await MainBidFormSchema.findOne({
+      formName: req.body.formName,
+    });
+
     if (existForm) {
-      return res.status(400).json({message: "form with this name is already exist"})
+      return res
+        .status(400)
+        .json({ message: "form with this name is already exist" });
     }
 
     const {
@@ -19,15 +24,12 @@ const createMyMainForm = async (req: Request, res: Response) => {
       formName,
       holidayStartDate,
     } = req.body;
-    const flightDate = req.body.flight[0].departureDate;
     // console.log(req.body)
 
     if (!hotel || !transfer || !flight || !image || !formName) {
-      return res
-        .status(400)
-        .json({ message: "Hotel and attraction fields are required" });
+      return res.status(400).json({ message: "fields are required" });
     }
-   
+
 
     const mainBidForm = new MainBidFormSchema({
       hotel,

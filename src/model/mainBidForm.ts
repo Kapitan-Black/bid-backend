@@ -67,7 +67,9 @@ const imageSeparatorSchema = new mongoose.Schema({
   id: { type: String },
   type: { type: String, enum: ["image"] },
   imageUrl: { type: String },
-  description: { type: String},
+  description: { type: String },
+  start: { type: Date },
+  end: { type: Date },
 });
 
 const mainBidFormSchema = new mongoose.Schema({
@@ -78,6 +80,7 @@ const mainBidFormSchema = new mongoose.Schema({
   idArray: [{ type: String }],
   formName: { type: String },
   holidayStartDate: { type: Date },
+  isBidApproved: { type: Boolean },
   createDate: { type: Date },
 });
 
