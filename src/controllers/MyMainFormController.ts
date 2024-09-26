@@ -24,7 +24,6 @@ const createMyMainForm = async (req: Request, res: Response) => {
       formName,
       holidayStartDate,
       isBidApproved,
-      randomNumber,
     } = req.body;
     // console.log(req.body)
 
@@ -46,6 +45,27 @@ const createMyMainForm = async (req: Request, res: Response) => {
       newBidNumber = 1;
     }
 
+
+
+
+    // Получаем последнюю форму с наибольшим bidNumber
+    const lastFakeForm = await MainBidFormSchema.findOne({})
+      .sort({ bidNumber: -1 }) // Сортировка по убыванию bidNumber
+      .limit(1); // Получаем только одну запись
+    console.log(lastFakeForm)
+
+    // Проверяем значение bidNumber и устанавливаем в 2035, если значение 0, null или undefined
+    let newLastFakeNumber =
+      lastFakeForm && lastFakeForm.fakeCountNumber != null
+        ? lastFakeForm.fakeCountNumber + 1
+        : 2035;
+      
+
+    // Если предыдущий bidNumber был 0, устанавливаем newBidNumber = 2035 и добавляем 1
+    if (lastFakeForm && lastFakeForm.bidNumber === 0) {
+      newLastFakeNumber = 2035;
+    }
+
     const mainBidForm = new MainBidFormSchema({
       hotel,
       transfer,
@@ -55,7 +75,7 @@ const createMyMainForm = async (req: Request, res: Response) => {
       formName,
       holidayStartDate,
       isBidApproved,
-      randomNumber,
+      fakeCountNumber: newLastFakeNumber,
       bidNumber: newBidNumber,
       createDate: new Date().toISOString(),
     });

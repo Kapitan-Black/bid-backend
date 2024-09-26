@@ -79,9 +79,9 @@ const mainBidFormSchema = new mongoose.Schema({
   formName: { type: String },
   holidayStartDate: { type: Date },
   isBidApproved: { type: Boolean },
-  randomNumber: { type: Number },
+  fakeCountNumber: { type: Number },
   createDate: { type: Date },
-  bidNumber: {type: Number},
+  bidNumber: { type: Number },
 });
 
 const MainBidFormSchema = mongoose.model("MainBidForm", mainBidFormSchema);
