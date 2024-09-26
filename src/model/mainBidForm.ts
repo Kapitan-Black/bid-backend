@@ -68,8 +68,6 @@ const imageSeparatorSchema = new mongoose.Schema({
   type: { type: String, enum: ["image"] },
   imageUrl: { type: String },
   description: { type: String },
-  start: { type: Date },
-  end: { type: Date },
 });
 
 const mainBidFormSchema = new mongoose.Schema({
