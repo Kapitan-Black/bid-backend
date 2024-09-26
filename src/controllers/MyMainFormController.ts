@@ -23,6 +23,8 @@ const createMyMainForm = async (req: Request, res: Response) => {
       idArray,
       formName,
       holidayStartDate,
+      isBidApproved,
+      randomNumber,
     } = req.body;
     // console.log(req.body)
 
@@ -30,6 +32,19 @@ const createMyMainForm = async (req: Request, res: Response) => {
       return res.status(400).json({ message: "fields are required" });
     }
 
+    // Получаем последнюю форму с наибольшим bidNumber
+    const lastForm = await MainBidFormSchema.findOne({})
+      .sort({ bidNumber: -1 }) // Сортировка по убыванию bidNumber
+      .limit(1); // Получаем только одну запись
+
+    // Проверяем значение bidNumber и устанавливаем в 1, если значение 0, null или undefined
+    let newBidNumber =
+      lastForm && lastForm.bidNumber != null ? lastForm.bidNumber + 1 : 1;
+
+    // Если предыдущий bidNumber был 0, устанавливаем newBidNumber = 1
+    if (lastForm && lastForm.bidNumber === 0) {
+      newBidNumber = 1;
+    }
 
     const mainBidForm = new MainBidFormSchema({
       hotel,
@@ -39,6 +54,9 @@ const createMyMainForm = async (req: Request, res: Response) => {
       idArray,
       formName,
       holidayStartDate,
+      isBidApproved,
+      randomNumber,
+      bidNumber: newBidNumber,
       createDate: new Date().toISOString(),
     });
 
