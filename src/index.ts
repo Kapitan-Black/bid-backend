@@ -3,7 +3,6 @@ import cors from "cors";
 import "dotenv/config";
 import mongoose from "mongoose";
 import { v2 as cloudinary } from "cloudinary";
-import MyImageRoute from "./routes/MyImageRoute";
 import MainFormRoute from "./routes/MainFormRoute";
 import HotelsRoute from "./routes/HotelsRoute";
 import DeleteImageRoute from "./routes/DeleteImageRoute";

@@ -14,6 +14,7 @@ const hotelSchema = new mongoose.Schema({
   checkInDate: { type: Date },
   checkOutDate: { type: Date },
   hotelDescription: { type: String },
+  stars: { type: Number },
   images: [{ type: String }],
   id: { type: String },
   rooms: [{ type: rooms }],
@@ -26,7 +27,6 @@ const transferSchema = new mongoose.Schema({
   transferDescription: { type: String },
   transferDate: { type: Date },
   departureTime: { type: String },
-  arrivalTime: { type: String },
   from: { type: String },
   to: { type: String },
   passengerComposition: { type: String },
@@ -60,6 +60,7 @@ const flightCardSchema = new mongoose.Schema({
   priceForAdult: { type: Number },
   priceForChild: { type: Number },
   priceForBaby: { type: Number },
+  currency: { type: String },
   agentComments: { type: String },
 });
 

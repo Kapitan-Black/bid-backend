@@ -8,6 +8,7 @@ interface IRoom {
 interface IHotel {
   hotelName: string;
   hotelDescription: string;
+  stars: number;
   images: string[];
   rooms: IRoom[];
 }
@@ -29,6 +30,7 @@ const rooms: Schema<IRoom> = new mongoose.Schema({
 const hotelsSchema: Schema<IHotel> = new Schema({
   hotelName: { type: String, required: true},
   hotelDescription: { type: String },
+  stars: { type: Number },
   images: [{ type: String }],
   rooms: [rooms],
 });
