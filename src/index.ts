@@ -47,3 +47,10 @@ app.use("/api/delete-image", DeleteImageRoute)
 app.listen(9000, () => {
   console.log("server started on localhost: 9000");
 });
+
+
+
+
+
+
+
