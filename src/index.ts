@@ -29,7 +29,15 @@ app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
 
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
+const corsOptions = {
+  origin: process.env.CLIENT_ORIGIN || "*", // Adjust origin to your frontend's domain or allow all
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allow specific methods
+  allowedHeaders: ["Content-Type", "Authorization"], // Allow these headers
+  credentials: true, // Enable cookies/sessions if necessary
+};
+
+app.use(cors(corsOptions)); // Apply CORS settings
 
 app.get("/health", async (req: Request, res: Response) => {
   res.send({message: "health OK!"})
