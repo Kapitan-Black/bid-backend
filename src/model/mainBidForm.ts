@@ -62,6 +62,7 @@ const flightCardSchema = new mongoose.Schema({
   priceForBaby: { type: Number },
   currency: { type: String },
   agentComments: { type: String },
+  sum: {type: Number},
 });
 
 const imageSeparatorSchema = new mongoose.Schema({
@@ -83,6 +84,7 @@ const mainBidFormSchema = new mongoose.Schema({
   fakeCountNumber: { type: Number },
   createDate: { type: Date },
   bidNumber: { type: Number },
+  totalSum: {type: Number},
 });
 
 const MainBidFormSchema = mongoose.model("MainBidForm", mainBidFormSchema);
