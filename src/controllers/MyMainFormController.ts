@@ -25,6 +25,8 @@ const createMyMainForm = async (req: Request, res: Response) => {
       holidayStartDate,
       isBidApproved,
       totalSum,
+      showSum,
+      currency,
     } = req.body;
     // console.log(req.body)
 
@@ -79,6 +81,8 @@ const createMyMainForm = async (req: Request, res: Response) => {
       fakeCountNumber: newLastFakeNumber,
       bidNumber: newBidNumber,
       totalSum: totalSum,
+      showSum: showSum,
+      currency: currency,
       createDate: new Date().toISOString(),
     });
 

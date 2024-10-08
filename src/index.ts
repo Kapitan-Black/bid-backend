@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
 
 app.use(express.json());
-// app.use(cors());
+
 const corsOptions = {
   origin: process.env.CLIENT_ORIGIN || "*", // Adjust origin to your frontend's domain or allow all
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allow specific methods

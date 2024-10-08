@@ -84,7 +84,9 @@ const mainBidFormSchema = new mongoose.Schema({
   fakeCountNumber: { type: Number },
   createDate: { type: Date },
   bidNumber: { type: Number },
-  totalSum: {type: Number},
+  totalSum: { type: Number },
+  showSum: { type: Boolean },
+  currency: { type: String },
 });
 
 const MainBidFormSchema = mongoose.model("MainBidForm", mainBidFormSchema);
