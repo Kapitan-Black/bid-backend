@@ -5,7 +5,7 @@
   "main": "./src/index.ts",
   "scripts": {
     "dev": "nodemon src/index.ts",                        
-     "build": "[my-framework] build --output public",
+     "build": "build --output public",
     "start": "node dist/index.js"     
   },
   "keywords": [],
